@@ -1,0 +1,11 @@
+<h2><%= @menu_item.name %></h2>
+<h3>price: $<%= @menu_item.price %><br>meal: <%= @menu_item.meal %>, <%= @menu_item.course %></h3>
+<p><%= @menu_item.description %></p>
+<p><%= @menu_item.allergens %></p>
+
+<a href="/menu_items/<%= @menu_item.id %>/edit">edit item</a>
+<form action="/menu_items/<%= @menu_item.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="delete">
+</form>
+<a href="/menu_items">menu</a>

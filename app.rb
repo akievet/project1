@@ -13,37 +13,52 @@ ActiveRecord::Base.establish_connection(
 ## Links: ['Add Party', 'List of Open Tables',
 ## 'List of Closed Tables', 'View Menu']
 get '/' do 
+	erb :index
 end
 
 # Display a list of menu items available
 ## WL: Organize by meal ['breakfast', 'lunch', 'brunch', 'dinner', etc]
 ## WL: Seperated in dropdown lists by course ['appetizers', 'drinks', 'salads', 'etc']
-get '/menu_items' do 
-end
-
-# Display a single menu item
-get '/menu_items/:id' do
+get '/menu_items' do
+	@menu_items = MenuItem.all
+	erb :"menu_items/index" 
 end
 
 # Display a form for a new menu item
 get '/menu_items/new' do
+	erb :"menu_items/new"
+end
+
+# Display a single menu item
+get '/menu_items/:id' do
+	@menu_item= MenuItem.find(params[:id])
+	erb :"menu_items/show"
 end
 
 #Creats a new menu item
 post '/menu_items' do 
+	MenuItem.create(params[:menu_item])
 	redirect '/menu_items'
 end
 
 # Display a form to edit a menu item
 get '/menu_items/:id/edit' do 
+	@menu_item= MenuItem.find(params[:id])
+	erb :"menu_items/edit"
 end
 
 #Updates a menu item
-get '/menu_items/:id' do 
+patch '/menu_items/:id' do 
+	menu_item= MenuItem.find(params[:id])
+	menu_item.update(params[:menu_item])
+	redirect "/menu_items/#{menu_item.id}"
 end
 
 # Deletes a menu item
-get '/menu_items/:id' do 
+delete '/menu_items/:id' do 
+	@menu_item= MenuItem.find(params[:id])
+	MenuItem.destroy(params[:id])
+	redirect "/menu_items"
 end
 
 # Display a list of all OPEN parties 
@@ -114,7 +129,7 @@ get '/parties/:id/receipt' do
 end
 
 # Marks the party as paid
-patch '/parties/:id/checkout'
+patch '/parties/:id/checkout' do
 end
 
 
