@@ -15,4 +15,11 @@
 		<td><%= @party.total_price %></td>
 	</tr>
 </table>
+<br>
+<ul>
+	<li>
+		15% Gratuity: <%= (@party.total_price * 0.15).round(3) %></li>
+	<li>20% Gratuity: <%= (@party.total_price * 0.2).round(3) %></li>
+	<li>25% Gratuity: <%= (@party.total_price * 0.25).round(3) %></li>
+</ul>
 <p>Thank you!</p>

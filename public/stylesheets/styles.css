@@ -3,3 +3,63 @@ body{
 	color: white;
 	font-family: Futura;
 }
+
+#wrap{
+	width: 100%;
+	min-width: 300px;
+	height: 50px;
+	margin: 0;
+	z-index: 99;
+	position: relative;
+	background-color: black;
+}
+
+.navbar{
+	text-align: center;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+}
+
+
+.navbar li{
+	height: auto;
+	width: 100px;
+	float: left;
+	text-align: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	background-color: black;
+}
+
+.navbar a {
+	padding: 13px 0;
+	border-right: 1px solid white;
+	text-decoration: none;
+	color: white;
+	display: block;
+}
+
+.navbar li:hover,
+a:hover {
+	background-color: pink;
+}
+
+.navbar li ul{
+	display: none;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar li:hover ul{
+	display: block;
+}
+
+.navbar li ul li{
+	background-color: purple;
+}
+
+

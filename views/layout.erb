@@ -5,9 +5,25 @@
 	<title>Restaurant App</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
 </head>
-<body id="container">
-
+<body>
+<div id="wrap">
+	<ul class="navbar">
+		<li><a href="/">home</a></li>
+		<li><a href="#">tables</a>
+			<ul>
+				<li><a href="/parties/new">add</a></li>
+				<li><a href="/parties">open</a></li>
+				<li><a href="/closed">closed</a></li>
+			</ul>
+		</li>
+		<li><a href="#">menu</a>
+			<ul>
+				<li><a href="/menu_items">view</a></li>
+				<li><a href="/menu_items/new">add</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
 	<%= yield %>
-	
 </body>
 </html>

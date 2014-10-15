@@ -109,7 +109,7 @@ end
 # Delete a party <--  NOT THE SAME AS MARKING AS CLOSED AND MOVING TO CLOSED ORDERS
 delete '/parties/:id' do
 	Party.destroy(params[:id])
-	redirect "/parties"
+	redirect '/parties'
 end
 
 

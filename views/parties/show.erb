@@ -1,13 +1,13 @@
-<h1><%= @party.name %></h1>
+<h2><%= @party.name %></h2>
 <h3>Table: <%= @party.table_name %> Party Size: <%= @party.number_people %>
 </h3>
 <a href="/parties/<%= @party.id %>/edit">Edit Party Information</a>
-<form action="/parties/<%= @party.id %>" action="post">
+<form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="delete">	
 </form>
 
-<h2>Orders:</h2>
+<h4>Orders:</h4>
 <ul>
 	<% @orders.each do |order| %>
 	<a href="/parties/<%= @party.id %>/orders/<%= order.id %>"><li>
@@ -25,5 +25,5 @@
 	<input type="submit" value="Mark as Paid">
 </form>
 <a href="/parties/<%= @party.id %>/orders/new">Add an Order</a><br>
-<a href="/parties">All Tables</a>
+
 
