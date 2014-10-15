@@ -1,0 +1,6 @@
+<form action="/parties/<%= @party.id%>/orders" method="post">
+	<% @menu_items.each do |menu_item| %>
+	<input type="radio" name="menu_item" value="<%= menu_item.id %>"><%= menu_item.name %> ... <%= menu_item.price %><br>
+	<% end %>
+	<input type="submit" value="Add Order to Party">
+</form>

@@ -1,0 +1,8 @@
+<ul>
+	<% @parties.each do |party| %>
+	<li>
+		<a href="/parties/<%= party.id %>">Table: <%= party.table_name %>, Name: <%= party.name %> </a>
+	</li>
+	<% end %>
+</ul>
+<a href="/parties/new">add new</a>

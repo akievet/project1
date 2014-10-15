@@ -64,49 +64,80 @@ end
 # Display a list of all OPEN parties 
 ## (parties who have at least one non-paid order)
 get '/parties' do 
+	@parties= Party.where(paid: false)
+	erb :"parties/index"
 end
 
 #Display a form for a new party
 get '/parties/new' do
+	erb :"parties/new"
 end
 
 #creates a new party
 post '/parties' do
+	Party.create({name: params['name'], number_people: params['number_people'], 
+		table_name: params['table_name'], paid: false})
 	redirect '/parties'
 end
 
 # Display a single party and all the menu items they've ordered 
 # link to add a new order to that party
 get '/parties/:id' do
+	@party= Party.find(params[:id])
+	@items= @party.menu_items
+	erb :"parties/show"
 end
 
 # Display a form to edit a party's details
 get '/parties/:id/edit' do 
+	@party= Party.find(params[:id])
+	erb :"parties/edit"
 end
 
 # Update a party's details
 patch '/parties/:id' do 
+	party= Party.find(params[:id])
+	party.update(params[:party])
+	redirect "/parties/#{party.id}"
 end
 
 # Delete a party <--  NOT THE SAME AS MARKING AS CLOSED AND MOVING TO CLOSED ORDERS
 delete '/parties/:id' do
+	Party.destroy(params[:id])
+	redirect "/parties"
 end
 
 # Lists all the party's orders
 get '/parties/:id/orders' do 
+	@party= Party.find(params[:id])
+	@orders= @party.orders
+	prices = @party.menu_items.map { |item| item.price}
+	@total= prices.inject{ |sum,x| sum + x} 
+	erb :"orders/index"
 end
 
 # Displays a form for a new order
-get '/parties/:id/orders/new' do 
+get '/parties/:id/orders/new' do
+	@party= Party.find(params[:id]) 
+	@menu_items= MenuItem.all 
+	erb :"orders/new"
 end
 
 # Creates a new order for the party
 post '/parties/:id/orders' do
-	redirect 
+	party= Party.find(params[:id])
+	menu_item= MenuItem.find(params['menu_item'])
+	order= Order.create({party_id: party.id, 
+		menu_item_id: menu_item.id})
+	redirect "/parties/#{party.id}/orders"
 end
 
 # Display a single order 
 get '/parties/:id/orders/:order_id' do
+	@order= Order.find(params[:order_id])
+	@menu_item= MenuItem.find(@order.menu_item_id)
+	party= Party.find(params[:id])
+	erb :"orders/show"
 end
 
 # Display a form to edit the order details ['notes', 'change queue', 'etc']

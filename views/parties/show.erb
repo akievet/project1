@@ -1,0 +1,20 @@
+<h1><%= @party.name %></h1>
+<h3>Table: <%= @party.table_name %> Party Size: <%= @party.number_people %>
+</h3>
+<a href="/parties/<%= @party.id %>/edit">Edit Party Information</a>
+<form action="/parties/<%= @party.id %>" action="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="delete">	
+</form>
+
+<h2>Orders:</h2>
+<ul>
+	<% @items.each do |item| %>
+	<li>
+		<%= item.name %> ...... <%= item.price %>
+	</li>
+	<% end %>
+</ul>
+
+<a href="/parties/<%= @party.id %>/orders/new">Add an Order</a>
+
