@@ -161,14 +161,28 @@ end
 get '/parties/:id/receipt' do
 	@party= Party.find(params[:id])
 	@orders= @party.orders
-	@menu_items= @party.menu_items
 	erb :"parties/receipt" 
 end
 
 # Marks the party as paid
 patch '/parties/:id/checkout' do
+	party=Party.find(params[:id])
+	party.update({paid: true})
+	redirect "/parties"
 end
 
+# Display list of paid tables
+get '/closed' do 
+	@parties= Party.where(paid: true)
+	erb :"closed/index"
+end
+
+get '/closed/:id' do
+	@party= Party.find(params[:id])
+	@orders= @party.orders
+
+	erb :"closed/show"
+end
 
 
 

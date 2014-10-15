@@ -1,0 +1,9 @@
+<h1>Closed Tables</h1>
+<ul>
+	<% @parties.each do |party|%> 
+	<a href="/closed/<%= party.id %>"><li>
+		Table: <%= party.table_name%>, Name: <%= party.name %>, Total: <%= party.total_price %>
+	</li></a>
+	<% end %>
+</ul>
+<a href="/">Home</a>

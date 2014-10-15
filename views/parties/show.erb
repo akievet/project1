@@ -19,6 +19,11 @@
 	<% end %>
 	<li>Total: $ <%= @party.total_price %></li>
 </ul>
-<a href="/parties/<%= @party.id %>/orders/new">Add an Order</a>
+<a href="/parties/<%= @party.id%>/receipt">Receipt</a><br>
+<form action="/parties/<%= @party.id%>/checkout" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="submit" value="Mark as Paid">
+</form>
+<a href="/parties/<%= @party.id %>/orders/new">Add an Order</a><br>
 <a href="/parties">All Tables</a>
 

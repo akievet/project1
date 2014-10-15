@@ -7,4 +7,14 @@ class Order < ActiveRecord::Base
 		menu_item= MenuItem.find(menu_item_id)
 		"#{menu_item.name} ....... #{menu_item.price}"
 	end
+
+	def item_name
+		menu_item= MenuItem.find(menu_item_id)
+		"#{menu_item.name}"
+	end
+
+	def item_price
+		menu_item= MenuItem.find(menu_item_id)
+		"#{menu_item.price}"
+	end
 end
