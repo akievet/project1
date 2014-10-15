@@ -17,7 +17,7 @@
 		<li><%= order.price_change_note %> ..... $<%= order.price_change %></li>
 		<% end %>
 	<% end %>
-	<li>Total: $ <%= @total %></li>
+	<li>Total: $ <%= @party.total_price %></li>
 </ul>
 <a href="/parties/<%= @party.id %>/orders/new">Add an Order</a>
 <a href="/parties">All Tables</a>

@@ -85,13 +85,6 @@ end
 get '/parties/:id' do
 	@party= Party.find(params[:id])
 	@orders= @party.orders
-
-	total_array= []
-	total_array << @party.menu_items.map { |item| item.price}
-	comps = @orders.map {|order| order.price_change}
-	total_array << comps.select {|x| x!= nil}
-	total_array.flatten!
-	@total= total_array.inject{ |sum,x| sum + x}
 	erb :"parties/show"
 end
 
@@ -114,14 +107,6 @@ delete '/parties/:id' do
 	redirect "/parties"
 end
 
-# Lists all the party's orders
-get '/parties/:id/orders' do 
-	@party= Party.find(params[:id])
-	@orders= @party.orders
-	prices = @party.menu_items.map { |item| item.price}
-	@total= prices.inject{ |sum,x| sum + x} 
-	erb :"orders/index"
-end
 
 # Displays a form for a new order
 get '/parties/:id/orders/new' do
@@ -174,7 +159,10 @@ end
 # Displays the content of the receipt.
 # Offer the file for download
 get '/parties/:id/receipt' do
-	 
+	@party= Party.find(params[:id])
+	@orders= @party.orders
+	@menu_items= @party.menu_items
+	erb :"parties/receipt" 
 end
 
 # Marks the party as paid
