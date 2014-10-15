@@ -10,11 +10,15 @@
 <h2>Orders:</h2>
 <ul>
 	<% @orders.each do |order| %>
-	<li>
+	<a href="/parties/<%= @party.id %>/orders/<%= order.id %>"><li>
 		<%= order.to_s %>
-	</li>
+	</li></a>
+		<% if order.price_change != 0 %>
+		<li><%= order.price_change_note %> ..... $<%= order.price_change %></li>
+		<% end %>
 	<% end %>
+	<li>Total: $ <%= @total %></li>
 </ul>
-<a href="/parties/<%= @party.id %>/orders">View and Edit Orders</a>
 <a href="/parties/<%= @party.id %>/orders/new">Add an Order</a>
+<a href="/parties">All Tables</a>
 

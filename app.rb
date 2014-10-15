@@ -85,6 +85,13 @@ end
 get '/parties/:id' do
 	@party= Party.find(params[:id])
 	@orders= @party.orders
+
+	total_array= []
+	total_array << @party.menu_items.map { |item| item.price}
+	comps = @orders.map {|order| order.price_change}
+	total_array << comps.select {|x| x!= nil}
+	total_array.flatten!
+	@total= total_array.inject{ |sum,x| sum + x}
 	erb :"parties/show"
 end
 
@@ -128,8 +135,9 @@ post '/parties/:id/orders' do
 	party= Party.find(params[:id])
 	menu_item= MenuItem.find(params['menu_item'])
 	order= Order.create({party_id: party.id, 
-		menu_item_id: menu_item.id})
-	redirect "/parties/#{party.id}/orders"
+		menu_item_id: menu_item.id,
+		price_change: 0})
+	redirect "/parties/#{party.id}"
 end
 
 # Display a single order 
@@ -156,10 +164,10 @@ patch '/parties/:id/orders/:order_id' do
 end
 
 # Removes an order
-delete '/parties/:id/orders' do
+delete '/parties/:id/orders/:order_id' do
 	party= Party.find(params[:id])
 	Order.destroy(params[:order_id])
-	redirect "/parties/#{party.id}/orders"
+	redirect "/parties/#{party.id}"
 end
 
 # Saves the party's receipt data to a file.

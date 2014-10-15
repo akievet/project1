@@ -1,8 +1,8 @@
 <h1>Edit Party: <%= @party.name %></h1>
 <form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="patch">
-	<input type="text" name="party[name]" value="<%= @party.name %>">
-	<input type="text" name="party[number_people]" value="<%= @party.number_people %>">
-	<input type="text" name="party[table_name]" value="<%= @party.table_name %>">
+	Name: <input type="text" name="party[name]" value="<%= @party.name %>"><br>
+	Party Size: <input type="text" name="party[number_people]" value="<%= @party.number_people %>"><br>
+	Table: <input type="text" name="party[table_name]" value="<%= @party.table_name %>"><br>
 	<input type="submit" value="Edit Party">
 </form>
