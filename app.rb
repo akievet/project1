@@ -37,8 +37,13 @@ end
 
 #Creats a new menu item
 post '/menu_items' do 
-	MenuItem.create(params[:menu_item])
-	redirect '/menu_items'
+	item= MenuItem.create(params[:menu_item])
+	if item.valid?
+		redirect '/menu_items'
+	else
+		@errors = item.errors.full_messages
+		erb :"menu_items/new"
+	end
 end
 
 # Display a form to edit a menu item
