@@ -1,8 +1,24 @@
-<ul>
-	<% @menu_items.each do |menu_item| %>
-	<li>
-		<a href="/menu_items/<%= menu_item.id %>"><%= menu_item.name %></a> -- $<%= menu_item.price %>
-	</li>
+<div class="menu">
+
+	<% @sorted.each do |course, menu_items| %>
+	<div class="menu-course">
+		<h4><%= course %></h4>
+		<table>
+			<% menu_items.each do |menu_item| %>
+			<tr>
+				<td id="item_name">
+					<a href="/menu_items/<%= menu_item.id %>"><%= menu_item.name %></a>
+				</td>
+				<td><%= menu_item.price %></td>
+			</tr>
+			<tr class="item_description">
+				<td><%= menu_item.description %></td>
+			</tr>
+			<tr class="blank_row">
+				<td colspan="3"></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
 	<% end %>
-</ul>
-<a href="/menu_items/new">add new</a>
+</div>	

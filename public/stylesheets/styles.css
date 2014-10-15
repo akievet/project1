@@ -1,8 +1,75 @@
+/*General Styles*/
+
 body{
-	background-color: maroon;
-	color: white;
-	font-family: Futura;
+	background-color: #f0f0f0;
+	color: #717171;
+	font-family: 'Courier New', Courier, mono;
 }
+
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover{
+	font-weight: bold;
+	color: #1ea415;
+}
+
+/*Form Styles*/
+.button{
+	background-color: inherit;
+	border: 1px solid #717171;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 15px 0;
+	padding: 5px;
+}
+
+.button:hover{
+	border: 2px solid #b3081b;
+}
+
+
+input[type="text"]{
+	padding: 5px;
+	margin: 10px 0;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+/*Menu Styles*/
+
+.menu a:hover {
+	font-weight: normal;
+}
+
+div.menu{
+	margin: 0 10%;
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	color: black;
+	font-size: 16pt;
+}
+
+td#item_name{
+	width: 300px;
+}
+
+tr.item_description > td{
+	font-size: 13pt;
+	line-height: 100%;
+}
+
+.blank_row{
+	height: 15px !important;
+}
+/*Nav Bar Styles*/
 
 #wrap{
 	width: 100%;
@@ -11,7 +78,7 @@ body{
 	margin: 0;
 	z-index: 99;
 	position: relative;
-	background-color: black;
+	border-bottom: 2px solid #717171
 }
 
 .navbar{
@@ -31,20 +98,20 @@ body{
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	background-color: black;
 }
 
 .navbar a {
 	padding: 13px 0;
-	border-right: 1px solid white;
+	border-right: 2px solid #b3081b;
 	text-decoration: none;
-	color: white;
+	color: #717171;
 	display: block;
 }
 
 .navbar li:hover,
-a:hover {
-	background-color: pink;
+.navbar a:hover {
+	background-color: #fcff24;
+	color: #1ea415;
 }
 
 .navbar li ul{
@@ -59,7 +126,22 @@ a:hover {
 }
 
 .navbar li ul li{
-	background-color: purple;
+	background-color: #fcff24;
 }
+
+
+/*New Party Page*/
+#new-party{
+	width: 300px;
+	margin: 0 auto;
+}
+
+/*Edit Party Page*/
+#edit-party{
+	width: 300px;
+	margin: 0 auto;
+}
+
+
 
 

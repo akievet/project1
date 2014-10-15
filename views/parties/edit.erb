@@ -1,9 +1,11 @@
+<div id="edit-party">
 <h1>Edit Party</h1>
 <h2><%= @party.name %></h2>
 <form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="patch">
-	Name: <input type="text" name="party[name]" value="<%= @party.name %>"><br>
+	Name: <br><input type="text" name="party[name]" value="<%= @party.name %>"><br>
 	Party Size: <input type="text" name="party[number_people]" value="<%= @party.number_people %>"><br>
-	Table: <input type="text" name="party[table_name]" value="<%= @party.table_name %>"><br>
-	<input type="submit" value="Edit Party">
+	Table: <br><input type="text" name="party[table_name]" value="<%= @party.table_name %>"><br>
+	<input type="submit" value="Edit Party" class="button">
 </form>
+</div>

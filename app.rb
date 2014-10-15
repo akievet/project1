@@ -20,7 +20,16 @@ end
 ## WL: Organize by meal ['breakfast', 'lunch', 'brunch', 'dinner', etc]
 ## WL: Seperated in dropdown lists by course ['appetizers', 'drinks', 'salads', 'etc']
 get '/menu_items' do
-	@menu_items = MenuItem.all
+	# @menu_items = MenuItem.all
+
+
+	@sorted = {}
+	courses=['Salumi, Etc', 'Market/Garden', 'Kitchen', 'Pizza', 'Pizza Toppings',
+		'Sandwiches', 'Pasta', 'Bakery/Pastry', 'Brunch', 'Alcoholic Drinks', 
+		'Non-Alcoholic Drinks']
+	courses.each do |course|
+		@sorted[course] = MenuItem.where(course: course)
+	end
 	erb :"menu_items/index" 
 end
 
@@ -36,7 +45,7 @@ get '/menu_items/:id' do
 end
 
 #Creats a new menu item
-post '/menu_items' do 
+post '/menu_items' do
 	item= MenuItem.create(params[:menu_item])
 	if item.valid?
 		redirect '/menu_items'
