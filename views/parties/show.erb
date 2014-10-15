@@ -9,12 +9,12 @@
 
 <h2>Orders:</h2>
 <ul>
-	<% @items.each do |item| %>
+	<% @orders.each do |order| %>
 	<li>
-		<%= item.name %> ...... <%= item.price %>
+		<%= order.to_s %>
 	</li>
 	<% end %>
 </ul>
-
+<a href="/parties/<%= @party.id %>/orders">View and Edit Orders</a>
 <a href="/parties/<%= @party.id %>/orders/new">Add an Order</a>
 

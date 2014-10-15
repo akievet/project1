@@ -84,7 +84,7 @@ end
 # link to add a new order to that party
 get '/parties/:id' do
 	@party= Party.find(params[:id])
-	@items= @party.menu_items
+	@orders= @party.orders
 	erb :"parties/show"
 end
 
@@ -136,27 +136,37 @@ end
 get '/parties/:id/orders/:order_id' do
 	@order= Order.find(params[:order_id])
 	@menu_item= MenuItem.find(@order.menu_item_id)
-	party= Party.find(params[:id])
+	@party= Party.find(params[:id])
 	erb :"orders/show"
 end
 
 # Display a form to edit the order details ['notes', 'change queue', 'etc']
 get '/parties/:id/orders/:order_id/edit' do
+	@party= Party.find(params[:id])
+	@order= Order.find(params[:order_id])
+	erb :"orders/edit"
 end
 
 # Updates the order's details
 patch '/parties/:id/orders/:order_id' do
-	redirect
+	party=Party.find(params[:id])
+	order=Order.find(params[:order_id])
+	order.update(params[:order])
+	redirect "/parties/#{party.id}/orders/#{order.id}"
 end
 
 # Removes an order
 delete '/parties/:id/orders' do
+	party= Party.find(params[:id])
+	Order.destroy(params[:order_id])
+	redirect "/parties/#{party.id}/orders"
 end
 
 # Saves the party's receipt data to a file.
 # Displays the content of the receipt.
 # Offer the file for download
-get '/parties/:id/receipt' do 
+get '/parties/:id/receipt' do
+	 
 end
 
 # Marks the party as paid

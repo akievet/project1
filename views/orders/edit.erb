@@ -1,0 +1,8 @@
+<h1>Edit Order: <%= @order.id %></h1>
+<form action="/parties/<%= @party.id %>/orders/<%= @order.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	Price Change: <input type="text" name="order[price_change]" value="0">
+	Order Notes: <input type="text" name="order[notes]" value="<%= @order.notes %>">
+	<input type="submit" value="submit changes">
+</form>
+

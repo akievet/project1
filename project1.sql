@@ -24,7 +24,8 @@ CREATE TABLE orders (
 	party_id integer,
 	menu_item_id integer,
 	notes VARCHAR(1000),
-	queue BOOLEAN
+	queue BOOLEAN,
+	price_change integer
 );
 \q
 

@@ -1,3 +1,8 @@
 <h1>Order No. <%= @order.id %></h1>
 Item <%= @menu_item.name %><br>
 Price <%= @menu_item.price %><br>
+<a href="/parties/<%= @party.id %>/orders/<%= @order.id %>/edit">Edit</a>
+<form action="/parties/<%= @party.id %>/orders" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="delete">
+</form>
