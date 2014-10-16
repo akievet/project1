@@ -1,29 +1,34 @@
-<h2><%= @party.name %></h2>
-<h3>Table: <%= @party.table_name %> Party Size: <%= @party.number_people %>
-</h3>
-<a href="/parties/<%= @party.id %>/edit">Edit Party Information</a>
-<form action="/parties/<%= @party.id %>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="delete">	
-</form>
+<div class="info-center">
+	<h2>Name: <%= @party.name %></h2>
+	<h3>Table: <%= @party.table_name %><br>Party Size: <%= @party.number_people %>
+	</h3>
+	<a href="/parties/<%= @party.id %>/edit" class="button">Edit Party Information</a>
+	<form action="/parties/<%= @party.id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="delete" class="button">	
+	</form>
 
-<h4>Orders:</h4>
-<ul>
-	<% @orders.each do |order| %>
-	<a href="/parties/<%= @party.id %>/orders/<%= order.id %>"><li>
-		<%= order.to_s %>
-	</li></a>
+	<h4>Orders:</h4>
+	<ul>
+		<% @orders.each do |order| %>
+		<a href="/parties/<%= @party.id %>/orders/<%= order.id %>"><li>
+			<%= order.to_s %>
+		</li></a>
 		<% if order.price_change != 0 %>
 		<li><%= order.price_change_note %> ..... $<%= order.price_change %></li>
 		<% end %>
-	<% end %>
-	<li>Total: $ <%= @party.total_price %></li>
-</ul>
-<a href="/parties/<%= @party.id%>/receipt">Receipt</a><br>
-<form action="/parties/<%= @party.id%>/checkout" method="post">
-	<input type="hidden" name="_method" value="patch">
-	<input type="submit" value="Mark as Paid">
-</form>
-<a href="/parties/<%= @party.id %>/orders/new">Add an Order</a><br>
+		<% end %>
+		<li>Total: $ <%= @party.total_price %></li>
+	</ul>
+
+	<div class="bottom-buttons">
+		<a href="/parties/<%= @party.id %>/orders/new" class="button">Add an Order</a>
+		<a href="/parties/<%= @party.id%>/receipt" class="button">Receipt</a>
+		<form action="/parties/<%= @party.id%>/checkout" method="post">
+			<input type="hidden" name="_method" value="patch">
+			<input type="submit" value="Mark as Paid" class="button">
+		</form>
+	</div>
+</div>
 
 

@@ -36,6 +36,11 @@ a:hover{
 	border: 2px solid #b3081b;
 }
 
+a:hover.button {
+	color: inherit;
+	font-weight: inherit;
+}
+
 
 input[type="text"]{
 	padding: 5px;
@@ -130,18 +135,30 @@ tr.item_description > td{
 }
 
 
+
 /*New Party Page*/
-#new-party{
+.info-center{
 	width: 300px;
 	margin: 0 auto;
 }
 
-/*Edit Party Page*/
-#edit-party{
-	width: 300px;
-	margin: 0 auto;
+
+div.bottom-buttons{
+	margin-top: 50px;
 }
 
+.lg-table-name{
+	font-size: 50pt;
+}
+
+div.table-index{
+	text-align: center;
+	float: left;
+	height: 115px;
+	width: 115px;
+	border: 2px solid #1ea415;
+	margin: 20px;
+}
 
 
 

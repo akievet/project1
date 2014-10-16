@@ -1,7 +1,6 @@
-<ul>
-	<% @parties.each do |party| %>
-	<li>
-		<a href="/parties/<%= party.id %>">Table: <%= party.table_name %>, Name: <%= party.name %> </a>
-	</li>
-	<% end %>
-</ul>
+
+<% @parties.each do |party| %>
+	<div class="table-index">
+		<a href="/parties/<%= party.id %>"><span class="lg-table-name"><%= party.table_name %></span><br><%= party.name %></a>
+	</div>
+<% end %>
