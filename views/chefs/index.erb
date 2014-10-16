@@ -1,3 +1,4 @@
+<div class="center-list">
 <h1>Kitchen Page</h1>
 <table>
 	<tr>
@@ -6,7 +7,7 @@
 		<th>Done</th>
 	</tr>
 	<% @orders.each do |order| %>
-		<tr>
+		<tr style="color:<%= order.color %>">
 			<td><%= order.item_name %></td>
 			<td><%= order.ellapsed_time %></td>
 			<td>
@@ -21,3 +22,4 @@
 		</tr>
 	<% end %>
 </table>
+</div>
