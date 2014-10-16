@@ -164,5 +164,28 @@ div.table-index{
 	margin: 20px;
 }
 
+/*Print Receipt*/
+
+.receipt{
+	display: none;
+}
+
+@media print{
+	.receipt{
+		display: inline;
+		visibility: visible;
+	}
+	#wrap,
+	.java{
+		display: none;
+	}
+	body,
+	a{
+		background-color: none;
+		color: black;
+	}
+}
+
+
 
 
