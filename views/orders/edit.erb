@@ -3,7 +3,18 @@
 <form action="/parties/<%= @party.id %>/orders/<%= @order.id %>" method="post">
 	<input type="hidden" name="_method" value="patch">
 	Order Notes:<br><input type="text" name="order[notes]" value="<%= @order.notes %>"><br>
-	Price Change<br>(item price: <%= @order.item_price %>):<br><input type="text" name="order[price_change]" value="<%= @order.price_change %>"><br>
+
+
+	Order Comp:<br>
+	<input type="radio" name="order[price_change]" value="<%= @order.no_charge %>"> 100%
+	<br>
+	<input type="radio" name="order[price_change]" value="<%= @order.half_off %>">
+	50%<br>
+	<input type="radio" name="order[price_change]" value=""> other
+	<br>
+	<input type="text" name="other_amount" value="<%= @order.price_change %>"/>
+	<br>
+
 	Price Change Note:<br><input type="text" name="order[price_change_note]" value="<%= @order.price_change_note %>">
 	<input type="submit" value="submit changes" class="button">
 </form>

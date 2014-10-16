@@ -139,7 +139,7 @@ post '/parties/:id/orders' do
 	menu_item= MenuItem.find(params['menu_item'])
 	order= Order.create({party_id: party.id, 
 		menu_item_id: menu_item.id, queue: true,
-		price_change: 0, start_time: params['start_time']})
+		price_change: 0, price_change_note: menu_item.name, start_time: params['start_time']})
 	redirect "/parties/#{party.id}"
 end
 
@@ -162,6 +162,10 @@ end
 patch '/parties/:id/orders/:order_id' do
 	party=Party.find(params[:id])
 	order=Order.find(params[:order_id])
+	price_change= params[:order][:price_change]
+	if price_change == nil
+		price_change = params[:other_amount]
+	end
 	order.update(params[:order])
 	redirect "/parties/#{party.id}/orders/#{order.id}"
 end

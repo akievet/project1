@@ -20,8 +20,12 @@ class Order < ActiveRecord::Base
 
 	def no_charge
 		menu_item= MenuItem.find(menu_item_id)
-		discount= -(menu_item.price)
-		self.update({price_change: discount})
+		"#{-(menu_item.price)}"
+	end
+
+	def half_off
+		menu_item= MenuItem.find(menu_item_id)
+		"#{-((menu_item.price)*0.5)}"
 	end
 
 	def ellapsed_time
