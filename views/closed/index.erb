@@ -1,8 +1,10 @@
-<h1>Closed Tables</h1>
-<ul>
-	<% @parties.each do |party|%> 
-	<a href="/closed/<%= party.id %>"><li>
-		Table: <%= party.table_name%>, Name: <%= party.name %>, Total: <%= party.total_price %>
-	</li></a>
-	<% end %>
-</ul>
+<div class="closed-tables">
+	<h1>Closed Tables</h1>
+	<ul>
+		<% @parties.each do |party|%> 
+		<a href="/closed/<%= party.id %>"><li>
+			Table: <%= party.table_name%>, Name: <%= party.name %>, Total: <%= party.total_price %>
+		</li></a>
+		<% end %>
+	</ul>
+</div>

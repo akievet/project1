@@ -1,9 +1,11 @@
+<div class="info-center">
 <h1>Edit Order: <%= @order.id %></h1>
 <form action="/parties/<%= @party.id %>/orders/<%= @order.id %>" method="post">
 	<input type="hidden" name="_method" value="patch">
-	Order Notes: <input type="text" name="order[notes]" value="<%= @order.notes %>">
-	Price Change (comp or upcharge): <input type="text" name="order[price_change]" value="<%= @order.price_change %>">
-	Price Change Note: <input type="text" name="order[price_change_note]" value="<%= @order.price_change_note %>">
-	<input type="submit" value="submit changes">
+	Order Notes:<br><input type="text" name="order[notes]" value="<%= @order.notes %>"><br>
+	Price Change<br>(item price: <%= @order.item_price %>):<br><input type="text" name="order[price_change]" value="<%= @order.price_change %>"><br>
+	Price Change Note:<br><input type="text" name="order[price_change_note]" value="<%= @order.price_change_note %>">
+	<input type="submit" value="submit changes" class="button">
 </form>
 
+</div>

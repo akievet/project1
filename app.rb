@@ -138,8 +138,8 @@ post '/parties/:id/orders' do
 	party= Party.find(params[:id])
 	menu_item= MenuItem.find(params['menu_item'])
 	order= Order.create({party_id: party.id, 
-		menu_item_id: menu_item.id,
-		price_change: 0})
+		menu_item_id: menu_item.id, queue: true,
+		price_change: 0, start_time: params['start_time']})
 	redirect "/parties/#{party.id}"
 end
 
@@ -200,6 +200,18 @@ get '/closed/:id' do
 	@orders= @party.orders
 
 	erb :"closed/show"
+end
+
+# Display 
+get '/chefs' do
+	@orders= Order.where(queue: true)
+	erb :"chefs/index"
+end
+
+patch '/chefs/:id' do
+	order= Order.find(params[:id])
+	order.update({queue: false})
+	redirect '/chefs'
 end
 
 

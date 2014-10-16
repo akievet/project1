@@ -23,4 +23,10 @@ class Order < ActiveRecord::Base
 		discount= -(menu_item.price)
 		self.update({price_change: discount})
 	end
+
+	def ellapsed_time
+		seconds= Time.now - self.start_time
+		"#{(seconds/60).round}min #{(seconds%60).round}sec"
+
+	end
 end

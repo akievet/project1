@@ -1,0 +1,23 @@
+<h1>Kitchen Page</h1>
+<table>
+	<tr>
+		<th>Menu Item</th>
+		<th>Ellapsed Time</th>
+		<th>Done</th>
+	</tr>
+	<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.item_name %></td>
+			<td><%= order.ellapsed_time %></td>
+			<td>
+				<form action="/chefs/<%= order.id %>" method="post">
+					<input type="hidden" name="_method" value="patch">
+					<input type="submit" value="Completed" class="button">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td><%= order.notes %></td>
+		</tr>
+	<% end %>
+</table>

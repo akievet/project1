@@ -142,8 +142,12 @@ tr.item_description > td{
 	margin: 0 auto;
 }
 
+.closed-tables{
+	width: 500px;
+	margin: 0 auto;
+}
 
-div.bottom-buttons{
+.bottom-buttons{
 	margin-top: 50px;
 }
 
