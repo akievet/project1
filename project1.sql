@@ -1,12 +1,6 @@
 CREATE DATABASE restaurantsql;
 \c restaurantsql;
 
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	email VARCHAR(50),
-	password VARCHAR(60)
-);
-
 CREATE TABLE parties (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
