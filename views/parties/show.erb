@@ -1,5 +1,5 @@
-<div class="info-center">
-	<h2>Name: <%= @party.name %></h2>
+<div class="sixteen columns"><h2>Name: <%= @party.name %></h2></div>
+<div class="six column">
 	<h3>Table: <%= @party.table_name %><br>Party Size: <%= @party.number_people %>
 	</h3>
 	<a href="/parties/<%= @party.id %>/edit" class="button">Edit Party Information</a>
@@ -7,7 +7,8 @@
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="delete" class="button">	
 	</form>
-
+</div>
+<div class="five column offset-by-two party-show-orders">
 	<h4>Orders:</h4>
 	<ul>
 		<% @orders.each do |order| %>
@@ -21,15 +22,12 @@
 		<hr>
 		<li>Total: $ <%= @party.total_price %></li>
 	</ul>
-
-	<div class="bottom-buttons">
-		<a href="/parties/<%= @party.id %>/orders/new" class="button">Add an Order</a>
-		<a href="/parties/<%= @party.id%>/receipt" class="button">Receipt</a>
-		<form action="/parties/<%= @party.id%>/checkout" method="post">
-			<input type="hidden" name="_method" value="patch">
-			<input type="submit" value="Mark as Paid" class="button">
-		</form>
-	</div>
+	<a href="/parties/<%= @party.id %>/orders/new" class="button">Add an Order</a>
+	<a href="/parties/<%= @party.id%>/receipt" class="button">Receipt</a>
+	<form action="/parties/<%= @party.id%>/checkout" method="post">
+		<input type="hidden" name="_method" value="patch">
+		<input type="submit" value="Mark as Paid" class="button">
+	</form>
 </div>
 
 

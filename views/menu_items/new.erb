@@ -1,4 +1,3 @@
-<h1>Add a new Menu Item</h1>
 <% if @errors %>
 <div class="errors">
 <h1>You have <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
@@ -9,17 +8,22 @@
   </ul>
 </div>
 <% end %>
+<h1>Add a new Menu Item</h1>
+<div class="six columns">
 <form action="/menu_items" method="post">
 	<input type= "text" name="menu_item[name]" placeholder="name">
 	<input type= "text" name="menu_item[price]" placeholder= "price">
 	<input type= "text" name="menu_item[description]" placeholder= "description">
 	<input type= "text" name="menu_item[allergens]" placeholder= "allergens"><br>
+</div>
+<div class= "three columns">
 	Menu:<br>
 	<input type="radio" name="menu_item[meal]" value="Breakfast">Breakfast<br>
 	<input type="radio" name="menu_item[meal]" value="Brunch">Brunch<br>
 	<input type="radio" name="menu_item[meal]" value="Lunch">Lunch<br>
 	<input type="radio" name="menu_item[meal]" value="Dinner">Dinner<br>
-
+</div>
+<div class="three columns">
 	Course:<br>
 	<input type="radio" name="menu_item[course]" value="Salumi, Etc">Salumi, Etc<br>
 	<input type="radio" name="menu_item[course]" value="Market/Garden">Market/Garden<br>
@@ -32,6 +36,9 @@
 	<input type="radio" name="menu_item[course]" value="Brunch">Brunch<br>
 	<input type="radio" name="menu_item[course]" value="Alcoholic Drinks">Alcoholic Drinks<br>
 	<input type="radio" name="menu_item[course]" value="Non-Alcoholic Drinks">Non-Alcoholic Drinks<br>
-	<input type="submit" value="Add Menu Item">
+	</div>
+	<div class="sixteen columns">
+	<input type="submit" value="Add Menu Item" class="button">
+	</div>
 
 </form>

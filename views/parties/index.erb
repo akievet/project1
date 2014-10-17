@@ -1,6 +1,8 @@
 
+<div class= "tables">
 <% @parties.each do |party| %>
-	<div class="table-index">
-		<a href="/parties/<%= party.id %>"><span class="lg-table-name"><%= party.table_name %></span><br><%= party.name %></a>
-	</div>
+	<a href="/parties/<%= party.id %>"><div class="table-index three columns">
+		<span class="lg-table-name"><%= party.table_name %></span><br><%= party.name %>
+	</div></a>
 <% end %>
+</div>

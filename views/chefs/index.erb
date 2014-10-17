@@ -1,10 +1,10 @@
-<div class="center-list">
+<div class="sixteen columns">
 <h1>Kitchen Page</h1>
-<table>
+<table class="chef">
 	<tr>
 		<th>Menu Item</th>
 		<th>Ellapsed Time</th>
-		<th>Done</th>
+		<th></th>
 	</tr>
 	<% @orders.each do |order| %>
 		<tr style="color:<%= order.color %>">
@@ -13,7 +13,7 @@
 			<td>
 				<form action="/chefs/<%= order.id %>" method="post">
 					<input type="hidden" name="_method" value="patch">
-					<input type="submit" value="Completed" class="button">
+					<input type="submit" value="Completed" class="fire">
 				</form>
 			</td>
 		</tr>

@@ -1,11 +1,14 @@
-<h2><%= @menu_item.name %></h2>
+<div class="sixteen columns"><h2><%= @menu_item.name %></h2></div>
+<div class="six columns">
 <h3>price: $<%= @menu_item.price %><br>meal: <%= @menu_item.meal %>, <%= @menu_item.course %></h3>
-<p><%= @menu_item.description %></p>
-<p><%= @menu_item.allergens %></p>
+<p>description: <%= @menu_item.description %></p>
+<p>allergens: <%= @menu_item.allergens %></p>
+</div>
 
-<a href="/menu_items/<%= @menu_item.id %>/edit">edit item</a>
+<div class="sixteen columns">
+<a href="/menu_items/<%= @menu_item.id %>/edit" class="button">edit</a>
 <form action="/menu_items/<%= @menu_item.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="delete">
+	<input type="submit" value="delete" class="button">
 </form>
-<a href="/menu_items">menu</a>
+</div>

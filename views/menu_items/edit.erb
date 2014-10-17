@@ -1,27 +1,32 @@
 <h1>Edit this Menu Item</h1>
-<form action="/menu_items/<%= @menu_item.id %>" method= "post">
-	<input type="hidden" name="_method" value="patch">
-	<input type= "text" name="menu_item[name]" value="<%= @menu_item.name %>">
-	<input type= "text" name="menu_item[price]" value="<%= @menu_item.price %>">
-	<input type= "text" name="menu_item[description]" value="<%= @menu_item.description %>">
-	<input type= "text" name="menu_item[allergens]" value="<%= @menu_item.allergens %>"><br>
-	Menu:<br>
-	<input type="radio" name="menu_item[meal]" value="Breakfast">Breakfast<br>
-	<input type="radio" name="menu_item[meal]" value="Brunch">Brunch<br>
-	<input type="radio" name="menu_item[meal]" value="Lunch">Lunch<br>
-	<input type="radio" name="menu_item[meal]" value="Dinner">Dinner<br>
-
-	Course:<br>
-	<input type="radio" name="menu_item[course]" value="Salumi, Etc">Salumi, Etc<br>
-	<input type="radio" name="menu_item[course]" value="Market/Garden">Market/Garden<br>
-	<input type="radio" name="menu_item[course]" value="Kitchen">Kitchen<br>
-	<input type="radio" name="menu_item[course]" value="Pizza">Pizza<br>
-	<input type="radio" name="menu_item[course]" value="Pizza Toppings">Pizza Toppings<br>
-	<input type="radio" name="menu_item[course]" value="Sandwiches">Sandwiches<br>
-	<input type="radio" name="menu_item[course]" value="Pasta">Pasta<br>
-	<input type="radio" name="menu_item[course]" value="Bakery/Pastry">Bakery/Pastry<br>
-	<input type="radio" name="menu_item[course]" value="Brunch">Brunch<br>
-	<input type="radio" name="menu_item[course]" value="Alcoholic Drinks">Alcoholic Drinks<br>
-	<input type="radio" name="menu_item[course]" value="Non-Alcoholic Drinks">Non-Alcoholic Drinks<br>
-	<input type="submit" value="Add Menu Item">
-</form>
+<div class= "six columns">
+	<form action="/menu_items/<%= @menu_item.id %>" method= "post">
+		<input type="hidden" name="_method" value="patch">
+		Name: <input type= "text" name="menu_item[name]" value="<%= @menu_item.name %>">
+		Price: <input type= "text" name="menu_item[price]" value="<%= @menu_item.price %>">
+		Description: <input type= "text" name="menu_item[description]" value="<%= @menu_item.description %>">
+		Allergens: <input type= "text" name="menu_item[allergens]" value="<%= @menu_item.allergens %>"><br>
+	</div>
+	<div class="three columns">
+		Menu:<br>
+		<input type="radio" name="menu_item[meal]" value="Breakfast">Breakfast<br>
+		<input type="radio" name="menu_item[meal]" value="Brunch">Brunch<br>
+		<input type="radio" name="menu_item[meal]" value="Lunch">Lunch<br>
+		<input type="radio" name="menu_item[meal]" value="Dinner">Dinner<br>
+	</div>
+	<div class="three columns">
+		Course:<br>
+		<input type="radio" name="menu_item[course]" value="Salumi, Etc">Salumi, Etc<br>
+		<input type="radio" name="menu_item[course]" value="Market/Garden">Market/Garden<br>
+		<input type="radio" name="menu_item[course]" value="Kitchen">Kitchen<br>
+		<input type="radio" name="menu_item[course]" value="Pizza">Pizza<br>
+		<input type="radio" name="menu_item[course]" value="Pizza Toppings">Pizza Toppings<br>
+		<input type="radio" name="menu_item[course]" value="Sandwiches">Sandwiches<br>
+		<input type="radio" name="menu_item[course]" value="Pasta">Pasta<br>
+		<input type="radio" name="menu_item[course]" value="Bakery/Pastry">Bakery/Pastry<br>
+		<input type="radio" name="menu_item[course]" value="Brunch">Brunch<br>
+		<input type="radio" name="menu_item[course]" value="Alcoholic Drinks">Alcoholic Drinks<br>
+		<input type="radio" name="menu_item[course]" value="Non-Alcoholic Drinks">Non-Alcoholic Drinks<br>
+		<input type="submit" value="Add Menu Item">
+	</form>
+</div>
