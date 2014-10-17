@@ -10,99 +10,10 @@ ActiveRecord::Base.establish_connection(
 )
 
 
-class RestaurantApp < Sinatra::Application 
 
-	use Rack::Session::Cookie 
-
-	use Warden::Manager do |manager|
-		manager.default_strategies :password
-		manager.failure_app = RestaurantApp
-		manager.serialize_into_session {|user| user.id}
-		manager.serialize_from_session {|id| User.get(id)}
-	end
-
-	Warden::Manager.before_failure do |env,opts|
-		env['REQUEST_METHOD'] = 'POST'
-	end
-
-	Warden::Strategies.add(:password) do
-		def valid?
-			params["email"] || params["password"]
-		end
-
-		def authenticate!
-			user = User.find_by(email: params['email'])
-
-			if user.nil?
-				fail!("The email you entered does not exist.")
-			elsif user.authenticate(params["password"])
-				success!(user)
-			else
-				fail!("Could not log in")
-			end
-		end
-	end
-
-	def warden_handler
-		env['warden']
-	end
-
-	def current_user
-		warden_handler.user
-	end
-
-	def check_authentication
-		redirect '/login' unless warden_handler.authenticated?
-	end
-
-	get '/' do 
-		erb :index
-	end
-
-	get '/auth/new' do
-
-		erb :"auth/new"
-	end 
-
-	post '/auth/new' do 
-		User.create(params[:user])
-		redirect '/auth/login'
-	end
-
-	get '/auth/login' do 
-		erb :"auth/login"
-	end
-
-	post '/auth/login' do 
-		warden_handler.authenticate!
-		if warden_handler.authenticated?
-			redirect "/users/#{warden_handler.user.id}"
-		else
-			redirect "/"
-		end 
-	end
-
-	get '/auth/logout' do 
-		warden_handler.logout
-		redirect '/'
-	end
-
-	# post '/auth/unauthenticated' do 
-	# 	redirect "/"
-	# end
-
-#This is what all following pages are going to need 
-#use Sinatra before filters
-	get '/users/:id' do 
-		check_authentication
-		@user= User.find(warden_handler.user.id)
-		erb :"users/index"
-	end
-
-	get '/protected' do 
-		check_authentication
-		erb :protected
-	end
+get '/' do 
+	erb :index
+end
 
 get '/menu_items' do
 	@sorted = {}
@@ -302,7 +213,7 @@ patch '/chefs/:id' do
 	order.update({queue: false})
 	redirect '/chefs'
 end
-end
+
 
 
 

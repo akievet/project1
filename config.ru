@@ -1,2 +1,2 @@
 require './app'
-run RestaurantApp
+run Sinatra::Application
