@@ -26,7 +26,7 @@ CREATE TABLE orders (
 	notes VARCHAR(1000),
 	queue BOOLEAN,
 	price_change integer,
-	price_change VARCHAR(1000),
+	price_change_note VARCHAR(1000),
 	start_time timestamp
 );
 \q
