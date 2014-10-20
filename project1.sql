@@ -25,7 +25,9 @@ CREATE TABLE orders (
 	menu_item_id integer,
 	notes VARCHAR(1000),
 	queue BOOLEAN,
-	price_change integer
+	price_change integer,
+	price_change VARCHAR(1000),
+	start_time timestamp [without time zone]
 );
 \q
 
