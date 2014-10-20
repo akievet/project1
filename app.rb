@@ -1,13 +1,12 @@
 require 'bundler'
 Bundler.require
 
+require_relative 'connection'
+
 ROOT_PATH = Dir.pwd
 Dir[ROOT_PATH+"/models/*.rb"].each{ |file| require file}
 
-ActiveRecord::Base.establish_connection(
-	adapter: "postgresql",
-	database: "restaurantsql"
-)
+
 
 
 
