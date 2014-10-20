@@ -27,7 +27,7 @@ CREATE TABLE orders (
 	queue BOOLEAN,
 	price_change integer,
 	price_change VARCHAR(1000),
-	start_time timestamp [without time zone]
+	start_time timestamp
 );
 \q
 
