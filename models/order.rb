@@ -29,13 +29,13 @@ class Order < ActiveRecord::Base
 	end
 
 	def ellapsed_time
-		seconds= Time.now - self.start_time
+		seconds= Time.now - self.created_at
 		"#{(seconds/60).floor}min #{(seconds%60).round}sec"
 
 	end
 
 	def color
-		ellapsed_time= Time.now - self.start_time
+		ellapsed_time= Time.now - self.created_at
 		if ellapsed_time > 900
 			"red"
 		elsif ellapsed_time >= 420

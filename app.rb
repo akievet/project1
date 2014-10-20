@@ -134,7 +134,7 @@ post '/parties/:id/orders' do
 	menu_item= MenuItem.find(params['menu_item'])
 	order= Order.create({party_id: party.id, 
 		menu_item_id: menu_item.id, queue: true,
-		price_change: 0, price_change_note: menu_item.name, start_time: params['start_time']})
+		price_change: 0, price_change_note: menu_item.name, created_at: params['created_at']})
 	redirect "/parties/#{party.id}"
 end
 
